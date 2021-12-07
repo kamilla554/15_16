@@ -2,21 +2,21 @@ package com.company;
 
 public class Leg implements Runnable {
     final String name;
-    private Object mon;
+    private Object moni;
 
     public Leg(String name, Object mon) {
         this.name = name;
-        this.mon = mon;
+        this.moni = mon;
     }
 
     @Override
     public void run() {
-        synchronized (mon) {
+        synchronized (moni) {
             while (true) {
                 step();
-                mon.notifyAll();
+                moni.notifyAll();
                 try {
-                    mon.wait();
+                    moni.wait();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
